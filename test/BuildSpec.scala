@@ -22,7 +22,7 @@ import sys.process._
 class BuildSpec extends WordSpec with Matchers {
   "Building the content" should {
     "produce static files" in {
-      val result = "bundle install" #&& Process("bundle exec middleman build --build-dir=public/ --clean", None) !
+      val result = "bundle install" #&& Process("bundle exec middleman build --build-dir=public/ --clean", None, "BASE_PATH" -> "/guides/ctc-guarantee-balance-service-guide/") !
 
       result shouldBe 0
     }

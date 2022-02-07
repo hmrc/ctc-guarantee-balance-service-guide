@@ -23,3 +23,8 @@ yarn-error.log
 
 .metals
 .vscode
+
+.batect
+.bsp
+public
+package-lock.json
