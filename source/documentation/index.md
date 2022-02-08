@@ -8,10 +8,11 @@ description: Software developers, designers, product owners or business analysts
 
 ## Useful CTC page links
 
-[CTC Guarantee Balance Testing Guide](https://developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-testing-guide/)
+[CTC Guarantee Balance Testing Guide](guides/ctc-guarantee-balance-testing-guide/)
 
-[CTC Guarantee Balance API documentation
-](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0)[CTC Traders API documentation](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/1.0)
+[CTC Guarantee Balance API documentation](api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0)
+
+[CTC Traders API documentation](api-documentation/docs/api/service/common-transit-convention-traders/1.0)
 
 ## Introduction
 
@@ -31,7 +32,7 @@ You must understand:
 
 ## Authorisation
 
-The endpoints in this API are user restricted. Further details about the User Restricted Authentication are given on the [Developer Hub Authorisation](https://developer.service.hmrc.gov.uk/api-documentation/docs/authorisation) page 4.
+The endpoints in this API are user restricted. Further details about the User Restricted Authentication are given on the [Developer Hub Authorisation](api-documentation/docs/authorisation) page 4.
 
 ## Process flow
 
@@ -134,7 +135,7 @@ Requests that take more than an hour to process will expire and will not be visi
 
 ## JSON schema files and cURL commands
 
-Detailed information for JSON schema files and cURL commands are available in the [Guarantee Balance Testing Guide](https://developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-testing-guide/).
+Detailed information for JSON schema files and cURL commands are available in the [Guarantee Balance Testing Guide](guides/ctc-guarantee-balance-testing-guide/).
 
 ## Get support
 
