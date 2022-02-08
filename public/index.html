@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en" class="govuk-template no-js">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Common Transit Convention Guarantee Balance Service Guide</title>
+
+    <link href="/guides/ctc-guarantee-balance-service-guide/stylesheets/manifest.css" rel="stylesheet" />
+
+    <link rel="canonical" href="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/">
+
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:image" content="developer.service.hmrc.gov.uk/images/govuk-large.png" />
+      <meta name="twitter:title" content="Common Transit Convention Guarantee Balance Service Guide" />
+      <meta name="twitter:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/" />
+
+      <meta property="og:image" content="developer.service.hmrc.gov.uk/images/govuk-large.png" />
+      <meta property="og:site_name" content="Common Transit Convention Guarantee Balance Service Guide" />
+      <meta property="og:type" content="object" />
+      <meta property="og:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/" />
+
+    <!--[if !IE]>-->
+<script
+src="/tracking-consent/tracking.js"
+id="tracking-consent-script-tag"
+data-gtm-container="b"
+data-language="en"></script>
+<!--<![endif]-->
+
+  </head>
+
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    <div class="app-pane">
+      <div class="app-pane__header toc-open-disabled">
+        <a href="#content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+        <header class="govuk-header app-header" role="banner" data-module="govuk-header">
+  <div class="govuk-header__container govuk-header__container--full-width">
+    <div class="govuk-header__logo">
+      <a href="/guides/ctc-guarantee-balance-service-guide/" class="govuk-header__link govuk-header__link--homepage">
+        <span class="govuk-header__logotype">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="govuk-header__logotype-crown"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 132 97"
+            height="30"
+            width="36"
+          >
+            <path
+              fill="currentColor" fill-rule="evenodd"
+              d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"
+            ></path>
+          </svg>
+          <span class="govuk-header__logotype-text">
+            GOV.UK
+          </span>
+        </span>
+        <span class="govuk-header__product-name">
+          Common Transit Convention Guarantee Balance Service Guide
+        </span>
+      </a>
+    </div>
+    <div class="govuk-header__content">
+      <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Menu">
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu">Menu</button>
+        <ul id="navigation" class="govuk-header__navigation-list">
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk">Developer Hub</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk/api-documentation/docs/using-the-hub">Documentation</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk/developer/applications">Applications</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk/developer/support">Support</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+      </div>
+
+        <div id="toc-heading" class="toc-show fixedsticky">
+          <button type="button" class="toc-show__label js-toc-show" aria-controls="toc">
+            Table of contents <span class="toc-show__icon"></span>
+          </button>
+        </div>
+
+      <div class="app-pane__body" data-module="in-page-navigation">
+          <div class="app-pane__toc">
+            <div class="toc" data-module="table-of-contents" tabindex="-1" aria-label="Table of contents" role="dialog">
+              
+              <button type="button" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></button>
+              <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading" data-module="collapsible-navigation">
+                      <ul>
+  <li>
+    <a href="/guides/ctc-guarantee-balance-service-guide/"><span>CTC Guarantee Balance API Service Guide</span></a>
+    <ul>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#useful-ctc-page-links"><span>Useful CTC page links</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#introduction"><span>Introduction</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#before-you-start"><span>Before you start</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#authorisation"><span>Authorisation</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#process-flow"><span>Process flow</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#how-to-use"><span>How to use</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#endpoints"><span>Endpoints</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#error-codes"><span>Error codes</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#api-rate-limit"><span>API rate limit</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#timing-out-period"><span>Timing out period</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#json-schema-files-and-curl-commands"><span>JSON schema files and cURL commands</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#get-support"><span>Get support</span></a>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+              </nav>
+            </div>
+          </div>
+
+        <div class="app-pane__content toc-open-disabled">
+          <main id="content" class="technical-documentation" data-module="anchored-headings">
+            <h1 id="ctc-guarantee-balance-api-service-guide">CTC Guarantee Balance API Service Guide</h1>
+
+<h2 id="useful-ctc-page-links">Useful CTC page links</h2>
+
+<p><a href="https://developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-testing-guide/" rel="noopener noreferrer">CTC Guarantee Balance Testing Guide</a></p>
+
+<p><a href="https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0" rel="noopener noreferrer">CTC Guarantee Balance API documentation
+</a><a href="https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/1.0" rel="noopener noreferrer">CTC Traders API documentation</a></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>If you move goods between the UK and other countries who are part of the Common Transit Convention (CTC), your movements must have the appropriate guarantee funds to cover eventualities, such as: the loss of goods during transit.</p>
+
+<p>Your goods can be delayed if your Guarantee Balance does not contain enough funds. This API has been provided so that you can check your balance and plan accordingly or increase it if you need to.</p>
+
+<h2 id="before-you-start">Before you start</h2>
+
+<p>You must understand:</p>
+
+<ul>
+<li><p>the CTC Guarantee Balance API provides a snapshot of the guarantee state at the time the request is submitted</p></li>
+<li><p>it is possible that even a very short delay could coincide with events that could change your balance information, such as the release of goods at the office of destination replenishing the guarantee amount locked against that movement</p></li>
+<li><p>the balance responses could become out of date quickly if you have a lot of transit movements progressing at the same time</p></li>
+</ul>
+
+<h2 id="authorisation">Authorisation</h2>
+
+<p>The endpoints in this API are user restricted. Further details about the User Restricted Authentication are given on the <a href="https://developer.service.hmrc.gov.uk/api-documentation/docs/authorisation" rel="noopener noreferrer">Developer Hub Authorisation</a> page 4.</p>
+
+<h2 id="process-flow">Process flow</h2>
+
+<p>The process of getting a Guarantee Balance is explained in this process flow chart:</p>
+
+<h3 id="overview-of-guarantee-balance-process">Overview of Guarantee Balance process</h3>
+
+<p><a href="../images/Guarantee_Balance_Process.png" rel="noopener noreferrer"><img src="/guides/ctc-guarantee-balance-service-guide/images/../images/Guarantee_Balance_Process.png" alt="Guarantee Balance process" /></a></p>
+
+<h2 id="how-to-use">How to use</h2>
+
+<p>In order to use the service, you must be signed in with your <a href="https://www.access.service.gov.uk/login/signin/creds" rel="noopener noreferrer">Government Gateway</a> credentials.</p>
+
+<p>To find out how much is left on a Guarantee Balance, you must provide:</p>
+
+<ul>
+<li><p>the principal Economic Operators Registration and Identification (EORI) number for the guarantee</p></li>
+<li><p>Access Code (a 4 digit alphanumeric pin that is not case sensitive)</p></li>
+<li><p>Guarantee Reference Number (GRN)</p></li>
+</ul>
+
+<p>You should note that Guarantee Balance information is only available for:</p>
+
+<ul>
+<li> type 0: guarantee waiver</li>
+<li> type 1: comprehensive guarantee</li>
+<li> type 9: individual guarantee with multiple usage</li>
+</ul>
+
+<p>Guarantee Balance information is not supported for:</p>
+
+<ul>
+<li> type 2: individual guarantee (by guarantor)</li>
+<li> type 4: individual guarantee in the form of vouchers</li>
+</ul>
+
+<p>See the GOV.UK guidance for more <a href="https://www.gov.uk/government/publications/the-new-computerised-transit-system-supporting-guidance/ncts-guarantees" rel="noopener noreferrer">detailed information about NCTS guarantees</a>.</p>
+
+<h2 id="endpoints">Endpoints</h2>
+
+<p><a href="https://developer.tax.service.gov.uk/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Send%20a%20Balance%20Request" rel="noopener noreferrer">POST endpoint</a> - used to initiate the balance request. You may receive a response immediately with a 200 OK or 400 Bad Request response, or a 202 Accepted response with a balance request ID.</p>
+
+<p><a href="https://developer.tax.service.gov.uk/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Check%20the%20status%20of%20a%20Balance%20Request" rel="noopener noreferrer">GET endpoint</a> - used to check the status of a balance request for which a response could not be provided immediately. You can use the balance request ID returned by the 202 Accepted response to call this endpoint.</p>
+
+<h2 id="error-codes">Error codes</h2>
+
+<p>The following error codes are limited in their detail due to constraints of the NCTS system.</p>
+
+<table>
+  <colgroup span="4"></colgroup>
+  <tr>
+    <th>errorType</th>
+    <th>errorPointer</th>
+    <th>errorReason</th>
+    <th>errorMessage</th>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>RC1.TIN</td>
+    <td></td>
+    <td>Incorrect EORI Number</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>GRR(1).Guarantee reference number (GRN)</td>
+    <td></td>
+    <td>Incorrect Guarantee Reference Number</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>GRR(1).ACC(1).Access code</td>
+    <td></td>
+    <td>Incorrect Access Code</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>GRR(1).GQY(1).Query identifier</td>
+    <td>R261</td>
+    <td>Unsupported Guarantee Type</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>GRR(1).OTG(1).TIN</td>
+    <td></td>
+    <td>EORI and Guarantee Reference Number do not match</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>RC1.TIN</td>
+    <td></td>
+    <td>Query limit for the EORI has been exceeded, or an unknown EORI has been used.</td>
+  </tr>
+</table>
+
+<p><strong>Note:</strong> There is a limit on the number of queries that can be made against an EORI number over a 24 hour period. An errorType 26 is returned if this limit is exceeded. The limit is currently set to 1000 in both Trader Test and Production environments; however, the Production limit may be subject to revision based upon usage.</p>
+
+<h2 id="api-rate-limit">API rate limit</h2>
+
+<p>The current API rate limit is 1 request per minute per guarantee reference. This improves the service provided to your software. You cannot request an increase to this rate limit.</p>
+
+<h2 id="timing-out-period">Timing out period</h2>
+
+<p>Requests that take more than an hour to process will expire and will not be visible by the query endpoints. If this happens, you should start a new balance request. During normal service the response should take only seconds but if you are waiting longer then you should check the <a href="https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues" rel="noopener noreferrer">NCTS service availability</a>.</p>
+
+<h2 id="json-schema-files-and-curl-commands">JSON schema files and cURL commands</h2>
+
+<p>Detailed information for JSON schema files and cURL commands are available in the <a href="https://developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-testing-guide/" rel="noopener noreferrer">Guarantee Balance Testing Guide</a>.</p>
+
+<h2 id="get-support">Get support</h2>
+
+<p>Before you get in touch, find out if there are any planned API downtime or technical issues by checking:</p>
+
+<ul>
+<li><p><a href="https://api-platform-status.production.tax.service.gov.uk/?_ga=2.107563906.1463571304.1643109365-1592354348.1635936762" rel="noopener noreferrer">HMRC API platform availability</a></p></li>
+<li><p><a href="https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues" rel="noopener noreferrer">NCTS service availability</a></p></li>
+</ul>
+
+<p>If you have specific questions about the CTC Guarantee Balance API, get in touch with our Software Developer Support Team.</p>
+
+<p>You&rsquo;ll get an initial response in 2 working days.</p>
+
+<p>Email us your questions to SDSTeam@hmrc.gov.uk. We might ask for more detailed information when we respond.</p>
+
+            
+          </main>
+
+          <aside>
+          </aside>
+
+          <footer class="govuk-footer app-footer" role="contentinfo">
+  <div class="govuk-footer__meta">
+    <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+
+        <ul class="govuk-footer__inline-list">
+            <li class="govuk-footer__inline-list-item">
+              <a class="govuk-footer__link" href="https://www.tax.service.gov.uk/accessibility-statement/hmrc-developer-hub">Accessibility statement</a>
+            </li>
+        </ul>
+
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        class="govuk-footer__licence-logo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewbox="0 0 483.2 195.7"
+        height="17"
+        width="41"
+      >
+        <path
+          fill="currentColor"
+          d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+        />
+      </svg>
+      <span class="govuk-footer__licence-description">
+        All content is available under the
+        <a
+          class="govuk-footer__link"
+          href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+          rel="license"
+        >Open Government Licence v3.0</a>, except where otherwise stated
+      </span>
+    </div>
+    <div class="govuk-footer__meta-item">
+      <a
+        class="govuk-footer__link govuk-footer__copyright-logo"
+        href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+      >© Crown copyright</a>
+    </div>
+  </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="/guides/ctc-guarantee-balance-service-guide/javascripts/application.js"></script>
+  </body>
+</html>
