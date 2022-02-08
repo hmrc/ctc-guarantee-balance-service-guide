@@ -26,5 +26,5 @@ yarn-error.log
 
 .batect
 .bsp
-public
 package-lock.json
+Gemfile.lock

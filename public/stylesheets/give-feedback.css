@@ -1,0 +1,22 @@
+.give-feedback {
+  padding: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #1d70b8;
+  color: #ffffff; }
+  @media (min-width: 40.0625em) {
+    .give-feedback {
+      padding: 30px; } }
+  .give-feedback a:link:not(:focus),
+  .give-feedback a:visited:not(:focus) {
+    color: inherit; }
+  .give-feedback a:active {
+    color: #0b0c0c; }
+
+.page-expiry--expired {
+  display: none;
+  padding: 15px;
+  margin-top: 60px;
+  border: 5px solid #d4351c;
+  background-color: #ffffff;
+  color: #0b0c0c; }
