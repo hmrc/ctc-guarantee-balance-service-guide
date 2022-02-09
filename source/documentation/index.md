@@ -42,6 +42,12 @@ The process of getting a Guarantee Balance is explained in this process flow cha
 
 ![Guarantee Balance process](../images/Guarantee_Balance_Process.png)
 
+1. An IE34 request guarantee balance query is sent to NCTS and the XML is checked to ensure it’s valid. 
+2. An IE917 rejection message is returned to the user if the XML is invalid.
+3. Valid XML is checked by GMS to validate that the guarantee reference number (GRN), trader tax ID number (TIN) and guarantee access pin (PIN) are correct. 
+4. If any of these are incorrect, an IE906 rejection message is returned to the user.
+5. A validated GMS check returns a successful IE37 receive guarantee balance message to the user. 
+
 ## How to use
 
 In order to use the service, you must be signed in with your [Government Gateway](https://www.access.service.gov.uk/login/signin/creds) credentials.
