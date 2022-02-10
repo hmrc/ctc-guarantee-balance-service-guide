@@ -8,11 +8,11 @@ description: Software developers, designers, product owners or business analysts
 
 ## Useful CTC page links
 
-[CTC Guarantee Balance Testing Guide](guides/ctc-guarantee-balance-testing-guide/)
+[CTC Guarantee Balance Testing Guide](/guides/ctc-guarantee-balance-testing-guide/)
 
-[CTC Guarantee Balance API documentation](api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0)
+[CTC Guarantee Balance API documentation](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0)
 
-[CTC Traders API documentation](api-documentation/docs/api/service/common-transit-convention-traders/1.0)
+[CTC Traders API documentation](/api-documentation/docs/api/service/common-transit-convention-traders/1.0)
 
 ## Introduction
 
