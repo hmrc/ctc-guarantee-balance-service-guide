@@ -139,7 +139,7 @@ The current API rate limit is 1 request per minute per guarantee reference. This
 
 Requests that take more than an hour to process will expire and will not be visible by the query endpoints. If this happens, you should start a new balance request. During normal service the response should take only seconds but if you are waiting longer then you should check the [NCTS service availability](https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues).
 
-## JSON schema files and cURL commands
+## JSON schema files and example requests
 
 Detailed information for JSON schema files and example requests are available in the [Guarantee Balance Testing Guide](/guides/ctc-guarantee-balance-testing-guide/).
 
