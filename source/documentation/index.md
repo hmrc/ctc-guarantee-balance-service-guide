@@ -141,7 +141,7 @@ Requests that take more than an hour to process will expire and will not be visi
 
 ## JSON schema files and cURL commands
 
-Detailed information for JSON schema files and cURL commands are available in the [Guarantee Balance Testing Guide](guides/ctc-guarantee-balance-testing-guide/).
+Detailed information for JSON schema files and example requests are available in the [Guarantee Balance Testing Guide](/guides/ctc-guarantee-balance-testing-guide/).
 
 ## Get support
 
