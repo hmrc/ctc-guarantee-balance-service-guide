@@ -32,7 +32,7 @@ You must understand:
 
 ## Authorisation
 
-The endpoints in this API are user restricted. Further details about the User Restricted Authentication are given on the [Developer Hub Authorisation](api-documentation/docs/authorisation) page 4.
+The endpoints in this API are user restricted. Further details about the User Restricted Authentication are given on the [Developer Hub Authorisation](/api-documentation/docs/authorisation) page 4.
 
 ## Process flow
 
@@ -75,9 +75,9 @@ See the GOV.UK guidance for more [detailed information about NCTS guarantees](ht
 
 ## Endpoints
 
-[POST endpoint](https://developer.tax.service.gov.uk/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Send%20a%20Balance%20Request) - used to initiate the balance request. You may receive a response immediately with a 200 OK or 400 Bad Request response, or a 202 Accepted response with a balance request ID.
+[POST endpoint](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Send%20a%20Balance%20Request) - used to initiate the balance request. You may receive a response immediately with a 200 OK or 400 Bad Request response, or a 202 Accepted response with a balance request ID.
 
-[GET endpoint](https://developer.tax.service.gov.uk/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Check%20the%20status%20of%20a%20Balance%20Request) - used to check the status of a balance request for which a response could not be provided immediately. You can use the balance request ID returned by the 202 Accepted response to call this endpoint.
+[GET endpoint](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Check%20the%20status%20of%20a%20Balance%20Request) - used to check the status of a balance request for which a response could not be provided immediately. You can use the balance request ID returned by the 202 Accepted response to call this endpoint.
 
 ## Error codes
 
