@@ -40,7 +40,7 @@ The process of getting a Guarantee Balance is explained in this process flow cha
 
 ### Overview of Guarantee Balance process
 
-<img src="../images/Guarantee_Balance_Process.png" alt="Guarantee Balance process." />
+<img src="images/Guarantee_Balance_Process.png" alt="Guarantee Balance process." />
 
 1. An IE34 request guarantee balance query is sent to NCTS and the XML is checked to ensure it’s valid. 
 2. An IE917 rejection message is returned to the user if the XML is invalid.
