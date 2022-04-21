@@ -50,8 +50,6 @@ The process of getting a Guarantee Balance is explained in this process flow cha
 
 ## How to use
 
-In order to use the service, you must be signed in with your [Government Gateway](https://www.access.service.gov.uk/login/signin/creds) credentials.
-
 To find out how much is left on a Guarantee Balance, you must provide:
 
 - the principal Economic Operators Registration and Identification (EORI) number for the guarantee
