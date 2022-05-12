@@ -1,4 +1,4 @@
-# Technical Documentation - Common Transit Convention Guarantee Balance Service Guide
+# Technical Documentation - CTC Guarantee Balance service guide
 
 ## Editing Service Guide pages
 

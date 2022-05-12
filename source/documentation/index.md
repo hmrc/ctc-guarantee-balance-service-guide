@@ -1,10 +1,10 @@
 ---
-title: CTC Guarantee Balance API Service Guide
+title: CTC Guarantee Balance API service guide
 weight: 1
 description: Software developers, designers, product owners or business analysts. Check your Guarantee Balance.
 ---
 
-# CTC Guarantee Balance API Service Guide
+# CTC Guarantee Balance API service guide
 
 ## Useful CTC page links
 
