@@ -1,5 +1,5 @@
 # Human read-able name for this site, displayed in the header bar
-service_name: Common Transit Convention Guarantee Balance Service Guide
+service_name: CTC Guarantee Balance service guide
 
 # The route that will be used to access this site (with tailing slash)
 service_link: /guides/ctc-guarantee-balance-service-guide/
