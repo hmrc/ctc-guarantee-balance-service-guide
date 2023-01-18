@@ -4,7 +4,7 @@ weight: 1
 description: Software developers, designers, product owners or business analysts. Check your Guarantee Balance.
 ---
 
-# CTC Guarantee Balance API service guide
+# CTC Guarantee Balance API phase 4 service guide
 
 ## Useful CTC page links
 
