@@ -1,156 +1,111 @@
 ---
-title: CTC Guarantee Balance API service guide
+title: CTC Guarantee Balance API phase 4 service guide
 weight: 1
-description: Software developers, designers, product owners or business analysts. Check your Guarantee Balance.
+description: Software developers, designers, product owners or business analysts. Check a trader's guarantee balance.
 ---
 
 # CTC Guarantee Balance API phase 4 service guide
 
-## Useful CTC page links
+Learn how to use [CTC Guarantee Balance API v1.0](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0) with your software.
 
-[CTC Guarantee Balance Testing Guide](/guides/ctc-guarantee-balance-testing-guide/)
+## API overview
 
-[CTC Guarantee Balance API documentation](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0)
+The CTC Guarantee Balance API is based on REST principles with endpoints that return data in JSON format and it uses standard HTTP error response codes.
 
-[CTC Traders API documentation](/api-documentation/docs/api/service/common-transit-convention-traders/1.0)
+Use the API to provide traders with up-to-date information about how much of their guarantee funds they have left to use when organising transit movements. Goods can be delayed if a trader's guarantee balance does not contain sufficient funds.
 
-## Introduction
+The API does not provide real-time data about a trader’s guarantee balance. Instead, the API provides a snapshot of the guarantee state at the time when a request is submitted. It is possible that a short delay could coincide with events that could change the trader’s balance information. Guarantee balance responses for a trader could become out of date quickly if the trader has a lot of transit movements progressing at the same time
 
-If you move goods between the UK and other countries who are part of the Common Transit Convention (CTC), your movements must have the appropriate guarantee funds to cover eventualities, such as: the loss of goods during transit.
+The API endpoints relate only to Great Britain and Northern Ireland. You can also use the [HMRC sandbox environment](/api-documentation/docs/sandbox/introduction) to run tests for Great Britain and Northern Ireland transit movements.
 
-Your goods can be delayed if your Guarantee Balance does not contain enough funds. This API has been provided so that you can check your balance and plan accordingly or increase it if you need to.
+You can use the API on its own or you can use it with the [CTC Traders API v1.0](/api-documentation/docs/api/service/common-transit-convention-traders/1.0), which enables your software to send departure and arrival movement notifications to the New Computerised Transit System (NCTS) and get messages sent from customs offices of departure and destination.
 
-## Before you start
+### NCTS guarantees explained
 
-You must understand:
+If a trader moves goods between the UK and other countries that are part of the Common Transit Convention (CTC), their transit movements must have the appropriate guarantee funds to cover eventualities, such as the loss of goods during transit.
 
-- the CTC Guarantee Balance API provides a snapshot of the guarantee state at the time the request is submitted
+Consequently, each transit declaration sent to the NCTS must include guarantee details. The NCTS checks the guarantee reference number (GRN) quoted against the principal’s Trader Identification Number (TIN) and the declared access code. Any validation failures will cause a declaration to be rejected.
 
-- it is possible that even a very short delay could coincide with events that could change your balance information, such as the release of goods at the office of destination replenishing the guarantee amount locked against that movement
+You can use more than one guarantee for a transit declaration if they are not comprehensive guarantees or guarantee waivers. A comprehensive guarantee or guarantee waiver that is not sufficient to cover a movement may be topped up by using an individual guarantee or vouchers.
 
-- the balance responses could become out of date quickly if you have a lot of transit movements progressing at the same time
+For more information, see [HMRC guidance about NCTS guarantees](https://www.gov.uk/government/publications/the-new-computerised-transit-system-supporting-guidance/ncts-guarantees).
 
-## Authorisation
+## API status
 
-The endpoints in this API are user restricted. Further details about the User Restricted Authentication are given on the [Developer Hub Authorisation](/api-documentation/docs/authorisation) page 4.
+This version of the CTC Guarantee Balance API supports only NCTS phase 4. [CTC Guarantee Balance API v2.0](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/2.0) supports only NCTS phase 5.
+
+## Quick start
+
+Learn how to get started with the CTC Guarantee Balance API.
+
+### Before you start
+
+Before you start using the Guarantee Balance API, you should:
+
+- ensure that you have an HMRC [developer account](/developer/login) - if you don’t have one, you must [register for an account](/developer/registration), activate it by email, and sign in
+- learn about the user-restricted [authentication](/api-documentation/docs/authorisation/user-restricted-endpoints) used by the API  
+- [create an application](/developer/applications/) in our sandbox environment
+- use the [Create Test User API](/api-documentation/docs/api/service/api-platform-test-user/1.0) to create one or more test users for your sandbox application
+- download [NCTS-P4 reference data](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) that can be used for testing
+- read the [testing guide](/guides/ctc-guarantee-balance-testing-guide) to check that your software is compatible with this version of the API and to learn how to test your application in the sandbox environment
+
+### Production environment requirements
+
+Before you can use the production environment for the CTC Guarantee Balance API, you must:
+
+- complete the [CTC Guarantee Balance API Application for Production Credentials Checklist](/guides/ctc-guarantee-balance-testing-guide/documentation/figures/CTCGuarantee_Balance_API_Checklist_07-02-22.odt) (OpenDocument Text document)
+- use your [developer account](/developer/login) to apply for production credentials
+
+### Get your customers ready
+
+If you work for a software house, each trader you serve must use the [Government Gateway](https://www.access.service.gov.uk/login/signin/creds) to [sign up to the CTC Traders API](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe?_gl=1*itulmt*_ga*MjA2MDk0MTQyMi4xNjY3Mzk2ODM5*_ga_Y4LWMWY6WS*MTY3NDgyMzU5OC41MS4xLjE2NzQ4NDE2NzcuMC4wLjA.&_ga=2.207635798.536493967.1674469117-2060941422.1667396839) and provide you with the following:
+
+- GB Economic Operators Registration and Identification (EORI) number
+- VAT details (optional)
+- Standard Industrial Classification (SIC) code
+- company or organisation details:
+  - unique tax reference (UTR) number
+  - registered company name (this must be an exact match)
+  - registered company address
+  - date of company establishment
+- email address
+- contact details
+
+## User journeys
+
+These journeys show examples of use:
+
+- developer setup
+- initiate a guarantee balance request
+- check the status of a guarantee balance request
 
 ## Process flow
 
-The process of getting a Guarantee Balance is explained in this process flow chart:
-
-### Overview of Guarantee Balance process
+The process of getting a Guarantee Balance is explained in this process flow chart.
 
 <img src="images/Guarantee_Balance_Process.png" alt="Guarantee Balance process." />
 
-1. An IE34 request guarantee balance query is sent to NCTS and the XML is checked to ensure it’s valid. 
+1. An IE34 request guarantee balance query is sent to NCTS and the XML is checked to ensure that it is valid. 
 2. An IE917 rejection message is returned to the user if the XML is invalid.
 3. Valid XML is checked by GMS to validate that the guarantee reference number (GRN), trader tax ID number (TIN) and guarantee access pin (PIN) are correct. 
 4. If any of these are incorrect, an IE906 rejection message is returned to the user.
 5. A validated GMS check returns a successful IE37 receive guarantee balance message to the user. 
 
-## How to use
+## Terms of use
 
-To find out how much is left on a Guarantee Balance, you must provide:
+Your application must comply with [our terms of use](/api-documentation/docs/terms-of-use). You must accept the terms of use before we issue your application’s production credentials.
 
-- the principal Economic Operators Registration and Identification (EORI) number for the guarantee
+## Related documentation
 
-- Access Code (a 4 digit alphanumeric pin that is not case sensitive)
+- [CTC Guarantee Balance API v1.0 documentation](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0)
+- [CTC Guarantee Balance API v1.0 reference](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0/oas/page)
+- [CTC Guarantee Balance API phase 4 testing guide](/guides/ctc-guarantee-balance-testing-guide/)
+- [CTC Traders API v1.0 documentation](/api-documentation/docs/api/service/common-transit-convention-traders/1.0)
 
-- Guarantee Reference Number (GRN)
+## Getting help and support
 
-You should note that Guarantee Balance information is only available for:
+Before contacting us, find out if there is planned API downtime or a technical issue by checking [HMRC API Platform Status](https://api-platform-status.production.tax.service.gov.uk) and [New Computerised Transit System service availability](https://www.gov.uk/guidance/new-computerised-transit-system-service-availability).
 
--  type 0: guarantee waiver
--  type 1: comprehensive guarantee
--  type 9: individual guarantee with multiple usage
+If you have specific questions about the CTC Guarantee Balance API, contact our Software Developer Support (SDS) Team. You’ll get an initial response within 2 working days.
 
-Guarantee Balance information is not supported for:
-
--  type 2: individual guarantee (by guarantor)
--  type 4: individual guarantee in the form of vouchers
-
-See the GOV.UK guidance for more [detailed information about NCTS guarantees](https://www.gov.uk/government/publications/the-new-computerised-transit-system-supporting-guidance/ncts-guarantees).
-
-## Endpoints
-
-[POST endpoint](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Send%20a%20Balance%20Request) - used to initiate the balance request. You may receive a response immediately with a 200 OK or 400 Bad Request response, or a 202 Accepted response with a balance request ID.
-
-[GET endpoint](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0#Check%20the%20status%20of%20a%20Balance%20Request) - used to check the status of a balance request for which a response could not be provided immediately. You can use the balance request ID returned by the 202 Accepted response to call this endpoint.
-
-## Error codes
-
-The following error codes are limited in their detail due to constraints of the NCTS system.
-
-<table>
-  <colgroup span="4"></colgroup>
-  <tr>
-    <th>errorType</th>
-    <th>errorPointer</th>
-    <th>errorReason</th>
-    <th>errorMessage</th>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>RC1.TIN</td>
-    <td></td>
-    <td>Incorrect EORI Number</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>GRR(1).Guarantee reference number (GRN)</td>
-    <td></td>
-    <td>Incorrect Guarantee Reference Number</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>GRR(1).ACC(1).Access code</td>
-    <td></td>
-    <td>Incorrect Access Code</td>
-  </tr>
-  <tr>
-    <td>14</td>
-    <td>GRR(1).GQY(1).Query identifier</td>
-    <td>R261</td>
-    <td>Unsupported Guarantee Type</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>GRR(1).OTG(1).TIN</td>
-    <td></td>
-    <td>EORI and Guarantee Reference Number do not match</td>
-  </tr>
-  <tr>
-    <td>26</td>
-    <td>RC1.TIN</td>
-    <td></td>
-    <td>Query limit for the EORI has been exceeded, or an unknown EORI has been used.</td>
-  </tr>
-</table>
-
-**Note:** There is a limit on the number of queries that can be made against an EORI number over a 24 hour period. An errorType 26 is returned if this limit is exceeded. The limit is currently set to 1000 in both Trader Test and Production environments; however, the Production limit may be subject to revision based upon usage.
-
-## API rate limit
-
-The current API rate limit is 1 request per minute per guarantee reference. This improves the service provided to your software. You cannot request an increase to this rate limit.
-
-## Timing out period
-
-Requests that take more than an hour to process will expire and will not be visible by the query endpoints. If this happens, you should start a new balance request. During normal service the response should take only seconds but if you are waiting longer then you should check the [NCTS service availability](https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues).
-
-## JSON schema files and example requests
-
-Detailed information for JSON schema files and example requests are available in the [Guarantee Balance Testing Guide](/guides/ctc-guarantee-balance-testing-guide/).
-
-## Get support
-
-Before you get in touch, find out if there are any planned API downtime or technical issues by checking:
-
-- [HMRC API platform availability](https://api-platform-status.production.tax.service.gov.uk/?_ga=2.107563906.1463571304.1643109365-1592354348.1635936762)
-
-- [NCTS service availability](https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues)
-
-If you have specific questions about the CTC Guarantee Balance API, get in touch with our Software Developer Support Team.
-
-You&#39;ll get an initial response in 2 working days.
-
-Email us your questions to SDSTeam@hmrc.gov.uk. We might ask for more detailed information when we respond.
+You can also email questions to [SDSTeam@hmrc.gov.uk](mailto:SDSTeam@hmrc.gov.uk). We might ask for more detailed information when we respond.
