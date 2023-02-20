@@ -40,7 +40,7 @@ You must subscribe each application you register to CTC Guarantee Balance API v1
 
 ## API access control
 
-CTC Guarantee Balance API v1.0 is accessible only to applications that have been placed in the allow list for that API. If you cannot subscribe to or access the API on the Developer Hub, please check with the SDS Team if your ‘ApplicationId’ needs to be added to the allow list for that API.
+CTC Guarantee Balance API v1.0 is accessible only to applications that have been placed in the allow list for that API. If you cannot subscribe to or access the API on the Developer Hub, please check with the SDS Team if your `ApplicationId` needs to be added to the allow list for that API.
 
 ## API versioning
 
@@ -92,7 +92,7 @@ After multiple attempts, perhaps with an exponential backoff strategy, the expec
 
 If a response code in the 4XX range is received, the API consumer should examine the response payload for more detail on the error before attempting any retry. This error range usually indicates an error with the request. The request should be modified before attempting a retry.
 
-For example, a 400 (Bad Request) with a payload response message stating ‘Payload is not valid according to schema’ should have its request payload modified so that it validates against the API schemas and then be resent. Similarly, a 406 (Not Acceptable) indicates that the `Accept` header is missing or invalid. The request should be amended accordingly.
+For example, a 400 (Bad Request) with a payload response message stating 'Payload is not valid according to schema' should have its request payload modified so that it validates against the API schemas and then be resent. Similarly, a 406 (Not Acceptable) indicates that the `Accept` header is missing or invalid. The request should be amended accordingly.
 
 If you are receiving these errors consistently, you should report the problem to the SDS Team.
 
