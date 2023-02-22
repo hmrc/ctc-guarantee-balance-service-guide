@@ -38,11 +38,14 @@ This version of the CTC Guarantee Balance API supports only NCTS phase 4. [CTC G
 
 Learn how to get started with the CTC Guarantee Balance API.
 
+If you are new to the NCTS, you should review all of this document before reviewing other documents for phase 4. If you are migrating from an earlier NCTS phase, you should review this section at least before reviewing other documents for phase 4.
+
 ### Before you start
 
 Before you start using the Guarantee Balance API, you should:
 
 - ensure that you have an HMRC [developer account](/developer/login) - if you don’t have one, you must [register for an account](/developer/registration), activate it by email, and sign in
+- add your subscription to this API to your application
 - learn about the user-restricted [authentication](/api-documentation/docs/authorisation/user-restricted-endpoints) used by the API  
 - [create an application](/developer/applications/) in our sandbox environment
 - use the [Create Test User API](/api-documentation/docs/api/service/api-platform-test-user/1.0) to create one or more test users for your sandbox application
@@ -75,9 +78,9 @@ If you work for a software house, each trader you serve must use the [Government
 
 These journeys show examples of use:
 
-- developer setup
-- initiate a guarantee balance request
-- check the status of a guarantee balance request
+- [developer setup](documentation/developer-setup.html)
+- [initiate a guarantee balance request](documentation/initiate-guarantee-balance-request.html)
+- [check the status of a guarantee balance request](documentation/check-guarantee-balance-request-status.html)
 
 ## Process flow
 
