@@ -27,6 +27,5 @@ yarn-error.log
 .batect
 .bsp
 package-lock.json
-Gemfile.lock
 .DS_Store
 source/.DS_Store
