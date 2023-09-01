@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" class="govuk-template no-js">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Developer setup | CTC Guarantee Balance API phase 4 service guide - CTC Guarantee Balance phase 4 service guide</title>
+
+    <link href="/guides/ctc-guarantee-balance-service-guide/stylesheets/manifest.css" rel="stylesheet" />
+
+    <link rel="canonical" href="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html">
+
+      <meta name="description" content="Software developers, designers, product owners or business analysts. Check a trader's guarantee balance." />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:image" content="developer.service.hmrc.gov.uk/images/govuk-large.png" />
+      <meta name="twitter:title" content="Developer setup | CTC Guarantee Balance API phase 4 service guide - CTC Guarantee Balance phase 4 service guide" />
+      <meta name="twitter:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html" />
+
+      <meta property="og:description" content="Software developers, designers, product owners or business analysts. Check a trader's guarantee balance." />
+      <meta property="og:image" content="developer.service.hmrc.gov.uk/images/govuk-large.png" />
+      <meta property="og:site_name" content="CTC Guarantee Balance phase 4 service guide" />
+      <meta property="og:title" content="Developer setup | CTC Guarantee Balance API phase 4 service guide" />
+      <meta property="og:type" content="object" />
+      <meta property="og:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html" />
+
+    
+  </head>
+
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    <div class="app-pane">
+      <div class="app-pane__header toc-open-disabled">
+        <a href="#content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+        <header class="govuk-header app-header" role="banner" data-module="govuk-header">
+  <div class="govuk-header__container govuk-header__container--full-width">
+    <div class="govuk-header__logo">
+      <a href="/guides/ctc-guarantee-balance-service-guide/" class="govuk-header__link govuk-header__link--homepage">
+        <span class="govuk-header__logotype">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            class="govuk-header__logotype-crown"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 132 97"
+            height="30"
+            width="36"
+          >
+            <path
+              fill="currentColor" fill-rule="evenodd"
+              d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"
+            ></path>
+          </svg>
+          <span class="govuk-header__logotype-text">
+            GOV.UK
+          </span>
+        </span>
+        <span class="govuk-header__product-name">
+          CTC Guarantee Balance phase 4 service guide
+        </span>
+      </a>
+    </div>
+    <div class="govuk-header__content">
+      <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Menu">
+        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu">Menu</button>
+        <ul id="navigation" class="govuk-header__navigation-list">
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk">Developer Hub</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk/api-documentation/docs/using-the-hub">Documentation</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk/developer/applications">Applications</a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link" href="https://developer.service.hmrc.gov.uk/developer/support">Support</a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+      </div>
+
+        <div id="toc-heading" class="toc-show fixedsticky">
+          <button type="button" class="toc-show__label js-toc-show" aria-controls="toc">
+            Table of contents <span class="toc-show__icon"></span>
+          </button>
+        </div>
+
+      <div class="app-pane__body" data-module="in-page-navigation">
+          <div class="app-pane__toc">
+            <div class="toc" data-module="table-of-contents" tabindex="-1" aria-label="Table of contents" role="dialog">
+              
+              <button type="button" class="toc__close js-toc-close" aria-controls="toc" aria-label="Hide table of contents"></button>
+              <nav id="toc" class="js-toc-list toc__list" aria-labelledby="toc-heading" data-module="collapsible-navigation">
+                      <ul>
+  <li>
+    <a href="/guides/ctc-guarantee-balance-service-guide/"><span>CTC Guarantee Balance API phase 4 service guide</span></a>
+    <ul>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#api-overview"><span>API overview</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#api-status"><span>API status</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#quick-start"><span>Quick start</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#user-journeys"><span>User journeys</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#process-flow"><span>Process flow</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#terms-of-use"><span>Terms of use</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#related-documentation"><span>Related documentation</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/#getting-help-and-support"><span>Getting help and support</span></a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>
+    <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html"><span>Developer setup</span></a>
+    <ul>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#trader-test"><span>Trader Test</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#api-subscription-model"><span>API subscription model</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#api-access-control"><span>API access control</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#api-versioning"><span>API versioning</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#api-rate-limiting"><span>API rate limiting</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#api-timeouts"><span>API timeouts</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#authentication"><span>Authentication</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#error-handling"><span>Error handling</span></a>
+      </li>
+      <li>
+        <a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html#error-codes"><span>Error codes</span></a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>
+    <a href="/guides/ctc-guarantee-balance-service-guide/documentation/initiate-guarantee-balance-request.html"><span>Initiate a guarantee balance request</span></a>
+  </li>
+</ul>
+<ul>
+  <li>
+    <a href="/guides/ctc-guarantee-balance-service-guide/documentation/check-guarantee-balance-request-status.html"><span>Check the status of a guarantee balance request</span></a>
+  </li>
+</ul>
+
+
+              </nav>
+            </div>
+          </div>
+
+        <div class="app-pane__content toc-open-disabled" aria-label="Content" tabindex="0">
+          <main id="content" class="technical-documentation" data-module="anchored-headings">
+            <h1 id="developer-setup">Developer setup</h1>
+
+<p>To develop using CTC Guarantee Balance API v1.0, you must:</p>
+
+<ul>
+<li>be familiar with HTTP, RESTful services, XML and OAuth2</li>
+<li>be registered as a developer on the <a href="/api-documentation" rel="noopener noreferrer">HMRC Developer Hub</a></li>
+<li>add at least one sandbox application on the Developer Hub</li>
+</ul>
+<p>Each application you register will be assigned an HMRC <code>ApplicationId</code>.</p>
+<p>You can view all the applications you have registered on the <a href="/developer/applications" rel="noopener noreferrer">Developer Hub Applications page</a> where you can administer API subscriptions and <a href="/api-documentation/docs/authorisation/credentials" rel="noopener noreferrer">application credentials</a>.</p>
+<p>Applications can be created in one of 2 possible environments:</p>
+
+<ul>
+<li>sandbox environments - where you start development and testing of your software</li>
+<li>production environment - when you are ready to go live you can request &lsquo;Production Credentials&rsquo; that will create you a new application (with a new <code>ApplicationId</code>) in the production environment</li>
+</ul>
+<p>The main differences between these 2 environments are that:</p>
+
+<ul>
+<li>in the sandbox environment you will <a href="/api-documentation/docs/testing/test-users-test-data-stateful-behaviour" rel="noopener noreferrer">create and use test users</a> to call the endpoints</li>
+<li>the release version of an API in the sandbox will generally be ahead of the version of the API in production</li>
+</ul>
+<p>The purpose of the sandbox (also known as External Test) is to provide an HMRC platform for all external partners to complete their required assurance activities so they are confident in their readiness for migration to NCTS phase 4.</p>
+<p>For more information about using our sandbox environments, see <a href="/api-documentation/docs/testing" rel="noopener noreferrer">Testing in the sandbox</a>.</p>
+<h2 id="trader-test">Trader Test</h2>
+
+<p>Trader Test is a functional test platform where you can assure your software integration. Trader Test simulates both the automated responses and also the real-life experience where NCTS support staff perform the tasks of Border Force personnel.</p>
+<h2 id="api-subscription-model">API subscription model</h2>
+
+<p>You must subscribe each application you register to CTC Guarantee Balance API v1.0. Subscribing allows an application access to all of the endpoints of the API.</p>
+<h2 id="api-access-control">API access control</h2>
+
+<p>CTC Guarantee Balance API v1.0 is a public API, so you should be able to gain access to it automatically and subscribe to it easily.</p>
+<h2 id="api-versioning">API versioning</h2>
+
+<p>For your application to be able to call a particular version of one of our APIs, you must:</p>
+
+<ul>
+<li>ensure that your application has access to it (by checking that the version is visible to you at the top of the API’s documentation page)</li>
+<li>subscribe your application to it (in addition to any other subscriptions you may already have for other versions)</li>
+<li>modify your application’s <code>Accept</code> request header value when making a call to the API to reflect the version you wish to use (see the specific API reference for more details about request header values)</li>
+</ul>
+<p>For more information about versioning, see our <a href="/api-documentation/docs/reference-guide#versioning" rel="noopener noreferrer">Reference guide</a>.</p>
+<h2 id="api-rate-limiting">API rate limiting</h2>
+
+<p>Each software house should register a single application with HMRC. This application will be used to identify the software house during the OAuth 2.0 grant flow and will also be used in subsequent per user API calls. We limit the number of requests that each application can make. This protects our backend service against excessive load and encourages real-time API calls over batch processing.</p>
+<p>We set limits based on anticipated loads and peaks. The rate limit of CTC Guarantee Balance API v1.0 is 1 request per minute per guarantee reference. It is not possible to request an increase in this rate limit.</p>
+<p>If your software reaches the allocated limit, some of your requests will get a HTTP 429 response code. If your application receives a 429 response, it should back off temporarily before attempting to make the same request again.</p>
+<p>In most cases, simply following software design best practices will deliver a good customer experience. API requests should not be unnecessarily batched and rate limited responses (HTTP 429) should be captured by the application and be automatically retried without generating user errors.</p>
+<p>Retries should not be too quick (delay the next attempt by a few seconds) and should include some randomisation to minimise the risk of different application instances conflicting. Where an application instance is generating high volumes of API calls, the software design should consider periodically pausing or locally rate limiting those API calls to minimise the potential for a spike in traffic from one instance impacting another.</p>
+<p>For more information about versioning, see our <a href="/api-documentation/docs/reference-guide#versioning" rel="noopener noreferrer">Reference guide</a>.</p>
+<h2 id="api-timeouts">API timeouts</h2>
+
+<p>Requests that take more than an hour to process will expire and will not be visible by the query endpoints. If this happens, you should start a new balance request. During normal service the response should take only seconds but if you are waiting longer then you should check the <a href="https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues" rel="noopener noreferrer">NCTS service availability</a>.</p>
+<h2 id="authentication">Authentication</h2>
+
+<p>You must use your Government Gateway account to authenticate directly with us. This grants authority to your application for specific scopes. We then issue an OAuth 2.0 access token that is specific to you. Your application passes the access token in subsequent API requests to user-restricted API endpoints. A declarant access token expires after 4 hours and will need to be refreshed.</p>
+<p>For more information about user-restricted endpoints, see our <a href="/api-documentation/docs/authorisation/user-restricted-endpoints" rel="noopener noreferrer">Authorisation</a> guide.</p>
+<h2 id="error-handling">Error handling</h2>
+
+<p>No system guarantees 100% error-free performance, so services calling our APIs need to be designed with failure in mind. There are several strategies to mitigate the errors that do occur.</p>
+<h3 id="5xx-errors">5XX errors</h3>
+
+<p>If an API returns an HTTP response code in the 5XX range, the recommended response is to retry. Typically, a 500 (Internal Server Error) or 503 (Service Unavailable) response will be returned if there is an issue with an API. The issue may be transient, hence the recommendation to retry. The one exception in this error range is when a 501 (Not Implemented) is returned. This indicates that the endpoint is incorrect. Retrying will not help in this situation. Instead, the URL should be checked and fixed.</p>
+<p>After multiple attempts, perhaps with an exponential backoff strategy, the expectation is that this will resolve the vast majority of errors. As an example, 3-5 retries over 1-2 minutes would be a reasonable retry strategy. Consideration should also be given to using the circuit breaker pattern.</p>
+<h3 id="4xx-errors">4XX errors</h3>
+
+<p>If a response code in the 4XX range is received, the API consumer should examine the response payload for more detail on the error before attempting any retry. This error range usually indicates an error with the request. The request should be modified before attempting a retry.</p>
+<p>For example, a 400 (Bad Request) with a payload response message stating &lsquo;Payload is not valid according to schema&rsquo; should have its request payload modified so that it validates against the API schemas and then be resent. Similarly, a 406 (Not Acceptable) indicates that the <code>Accept</code> header is missing or invalid. The request should be amended accordingly.</p>
+<p>If you are receiving these errors consistently, you should report the problem to the SDS Team.</p>
+<h3 id="best-practices-recommendations">Best practices recommendations</h3>
+
+<p>There are many best practices recommendations for handling API errors and exceptions, including the following:</p>
+
+<ul>
+<li><a href="https://aws.amazon.com/blogs/apn/the-6-pillars-of-the-aws-well-architected-framework/" rel="noopener noreferrer">The 6 Pillars of the AWS Well-Architected Framework</a> (AWS Partner Network blog)</li>
+<li><a href="https://docs.aws.amazon.com/whitepapers/latest/running-containerized-microservices/design-for-failure.html" rel="noopener noreferrer">Design for Failure</a> (excerpt from Amazon white paper &lsquo;Running Containerized Microservices on AWS&rsquo;)</li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/" rel="noopener noreferrer">Implement resilient applications</a> (excerpt from Microsoft e-book &lsquo;.NET Microservices Architecture for Containerized .NET Applications&rsquo;)</li>
+</ul>
+<h2 id="error-codes">Error codes</h2>
+
+<p>The following error codes are limited in their detail due to constraints of the NCTS.</p>
+
+<table>
+  <colgroup span="4"></colgroup>
+  <tr>
+    <th>Error type</th>
+    <th>Error pointer</th>
+    <th>Error reason</th>
+    <th>Error message</th>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>RC1.TIN</td>
+    <td></td>
+    <td>Incorrect EORI Number</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>GRR(1).Guarantee reference number (GRN)</td>
+    <td></td>
+    <td>Incorrect Guarantee Reference Number</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>GRR(1).ACC(1).Access code</td>
+    <td></td>
+    <td>Incorrect Access Code</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>GRR(1).GQY(1).Query identifier</td>
+    <td>R261</td>
+    <td>Unsupported Guarantee Type</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>GRR(1).OTG(1).TIN</td>
+    <td></td>
+    <td>EORI and Guarantee Reference Number do not match</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>RC1.TIN</td>
+    <td></td>
+    <td>Query limit for the EORI has been exceeded, or an unknown EORI has been used.</td>
+  </tr>
+</table>
+<p><strong>Note:</strong> There is a limit on the number of queries that can be made against an EORI number over a 24-hour period. An error type <code>26</code> is returned if this limit is exceeded. The limit is currently set to <code>1000</code> in both Trader Test and Production environments, but the Production limit may be subject to revision based upon usage.</p>
+
+            
+          </main>
+
+          <aside>
+          </aside>
+
+          <footer class="govuk-footer app-footer" role="contentinfo">
+  <div class="govuk-footer__meta">
+    <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+
+        <ul class="govuk-footer__inline-list">
+            <li class="govuk-footer__inline-list-item">
+              <a class="govuk-footer__link" href="https://www.tax.service.gov.uk/accessibility-statement/hmrc-developer-hub">Accessibility statement</a>
+            </li>
+        </ul>
+
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        class="govuk-footer__licence-logo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewbox="0 0 483.2 195.7"
+        height="17"
+        width="41"
+      >
+        <path
+          fill="currentColor"
+          d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+        />
+      </svg>
+      <span class="govuk-footer__licence-description">
+        All content is available under the
+        <a
+          class="govuk-footer__link"
+          href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+          rel="license"
+        >Open Government Licence v3.0</a>, except where otherwise stated
+      </span>
+    </div>
+    <div class="govuk-footer__meta-item">
+      <a
+        class="govuk-footer__link govuk-footer__copyright-logo"
+        href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+      >© Crown copyright</a>
+    </div>
+  </div>
+</footer>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="/guides/ctc-guarantee-balance-service-guide/javascripts/application.js"></script>
+  </body>
+</html>

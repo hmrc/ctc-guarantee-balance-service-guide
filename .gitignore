@@ -30,3 +30,4 @@ package-lock.json
 .DS_Store
 source/.DS_Store
 /project/.bloop
+Gemfile.lock
