@@ -29,3 +29,4 @@ yarn-error.log
 package-lock.json
 .DS_Store
 source/.DS_Store
+/project/.bloop
