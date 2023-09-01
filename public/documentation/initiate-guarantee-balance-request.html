@@ -5,30 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-    <title>CTC Guarantee Balance phase 4 service guide</title>
+    <title>Initiate a guarantee balance request | CTC Guarantee Balance API phase 4 service guide - CTC Guarantee Balance phase 4 service guide</title>
 
     <link href="/guides/ctc-guarantee-balance-service-guide/stylesheets/manifest.css" rel="stylesheet" />
 
-    <link rel="canonical" href="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/">
+    <link rel="canonical" href="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/documentation/initiate-guarantee-balance-request.html">
 
+      <meta name="description" content="Software developers, designers, product owners or business analysts. Check a trader's guarantee balance." />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:image" content="developer.service.hmrc.gov.uk/images/govuk-large.png" />
-      <meta name="twitter:title" content="CTC Guarantee Balance phase 4 service guide" />
-      <meta name="twitter:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/" />
+      <meta name="twitter:title" content="Initiate a guarantee balance request | CTC Guarantee Balance API phase 4 service guide - CTC Guarantee Balance phase 4 service guide" />
+      <meta name="twitter:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/documentation/initiate-guarantee-balance-request.html" />
 
+      <meta property="og:description" content="Software developers, designers, product owners or business analysts. Check a trader's guarantee balance." />
       <meta property="og:image" content="developer.service.hmrc.gov.uk/images/govuk-large.png" />
       <meta property="og:site_name" content="CTC Guarantee Balance phase 4 service guide" />
+      <meta property="og:title" content="Initiate a guarantee balance request | CTC Guarantee Balance API phase 4 service guide" />
       <meta property="og:type" content="object" />
-      <meta property="og:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/" />
+      <meta property="og:url" content="developer.service.hmrc.gov.uk/guides/ctc-guarantee-balance-service-guide/documentation/initiate-guarantee-balance-request.html" />
 
-    <!--[if !IE]>-->
-<script
-src="/tracking-consent/tracking.js"
-id="tracking-consent-script-tag"
-data-gtm-container="b"
-data-language="en"></script>
-<!--<![endif]-->
-
+    
   </head>
 
   <body class="govuk-template__body">
@@ -185,129 +181,31 @@ data-language="en"></script>
 
         <div class="app-pane__content toc-open-disabled" aria-label="Content" tabindex="0">
           <main id="content" class="technical-documentation" data-module="anchored-headings">
-            <h1 id="ctc-guarantee-balance-api-phase-4-service-guide">CTC Guarantee Balance API phase 4 service guide</h1>
+            <h1 id="initiate-a-guarantee-balance-request">Initiate a guarantee balance request</h1>
 
-<p>Learn how to use <a href="/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0" rel="noopener noreferrer">CTC Guarantee Balance API v1.0</a> with your software.</p>
+<p>Use the POST endpoint <a href="/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0/oas/page#tag/ctc-guarantee-balance-api/operation/SendaBalanceRequest" rel="noopener noreferrer">Send a balance request</a> of CTC Guarantee Balance API v1.0 to find out how much is left on a trader&rsquo;s guarantee balance.</p>
+<p>To execute a balance query, you must provide:</p>
 
-<h2 id="api-overview">API overview</h2>
+<ul>
+<li>the trader identification number (TIN) of the principal on the guarantee</li>
+<li>the  guarantee reference number (GRN) of the trader’s guarantee</li>
+<li>an access code for the guarantee, which is a 4-digit alphanumeric PIN that is not case sensitive</li>
+</ul>
+<p>Guarantee balance information is available only for:</p>
 
-<p>The CTC Guarantee Balance API is based on REST principles with endpoints that return data in JSON format and it uses standard HTTP error response codes.</p>
+<ul>
+<li> type 0: guarantee waiver</li>
+<li> type 1: comprehensive guarantee</li>
+<li> type 9: individual guarantee with multiple usage</li>
+</ul>
+<p>Guarantee balance information is not supported for:</p>
 
-<p>Use the API to provide traders with up-to-date information about how much of their guarantee funds they have left to use when organising transit movements. Goods can be delayed if a trader&rsquo;s guarantee balance does not contain sufficient funds.</p>
-
-<p>The API does not provide real-time data about a trader’s guarantee balance. Instead, the API provides a snapshot of the guarantee state at the time when a request is submitted. It is possible that a short delay could coincide with events that could change the trader’s balance information. Guarantee balance responses for a trader could become out of date quickly if the trader has a lot of transit movements progressing at the same time</p>
-
-<p>The API endpoints relate only to Great Britain and Northern Ireland. You can also use the <a href="/api-documentation/docs/sandbox/introduction" rel="noopener noreferrer">HMRC sandbox environment</a> to run tests for Great Britain and Northern Ireland transit movements.</p>
-
-<p>You can use the API on its own or you can use it with the <a href="/api-documentation/docs/api/service/common-transit-convention-traders/1.0" rel="noopener noreferrer">CTC Traders API v1.0</a>, which enables your software to send departure and arrival movement notifications to the New Computerised Transit System (NCTS) and get messages sent from customs offices of departure and destination.</p>
-
-<h3 id="ncts-guarantees-explained">NCTS guarantees explained</h3>
-
-<p>If a trader moves goods between the UK and other countries that are part of the Common Transit Convention (CTC), their transit movements must have the appropriate guarantee funds to cover eventualities, such as the loss of goods during transit.</p>
-
-<p>Consequently, each transit declaration sent to the NCTS must include guarantee details. The NCTS checks the guarantee reference number (GRN) quoted against the principal’s Trader Identification Number (TIN) and the declared access code. Any validation failures will cause a declaration to be rejected.</p>
-
-<p>You can use more than one guarantee for a transit declaration if they are not comprehensive guarantees or guarantee waivers. A comprehensive guarantee or guarantee waiver that is not sufficient to cover a movement may be topped up by using an individual guarantee or vouchers.</p>
-
+<ul>
+<li> type 2: individual guarantee (by guarantor)</li>
+<li> type 4: individual guarantee in the form of vouchers</li>
+</ul>
 <p>For more information, see <a href="https://www.gov.uk/government/publications/the-new-computerised-transit-system-supporting-guidance/ncts-guarantees" rel="noopener noreferrer">HMRC guidance about NCTS guarantees</a>.</p>
-
-<h2 id="api-status">API status</h2>
-
-<p>This version of the CTC Guarantee Balance API supports only NCTS phase 4. <a href="/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/2.0" rel="noopener noreferrer">CTC Guarantee Balance API v2.0</a> supports only NCTS phase 5.</p>
-
-<h2 id="quick-start">Quick start</h2>
-
-<p>Learn how to get started with the CTC Guarantee Balance API.</p>
-
-<p>If you are new to the NCTS, you should review all of this document before reviewing other documents for phase 4. If you are migrating from an earlier NCTS phase, you should review this section at least before reviewing other documents for phase 4.</p>
-
-<h3 id="before-you-start">Before you start</h3>
-
-<p>Before you start using the Guarantee Balance API, you should:</p>
-
-<ul>
-<li>ensure that you have an HMRC <a href="/developer/login" rel="noopener noreferrer">developer account</a> - if you don’t have one, you must <a href="/developer/registration" rel="noopener noreferrer">register for an account</a>, activate it by email, and sign in</li>
-<li>add your subscription to this API to your application</li>
-<li>learn about the user-restricted <a href="/api-documentation/docs/authorisation/user-restricted-endpoints" rel="noopener noreferrer">authentication</a> used by the API<br></li>
-<li><a href="/developer/applications/" rel="noopener noreferrer">create an application</a> in our sandbox environment</li>
-<li>use the <a href="/api-documentation/docs/api/service/api-platform-test-user/1.0" rel="noopener noreferrer">Create Test User API</a> to create one or more test users for your sandbox application</li>
-<li>download <a href="https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en" rel="noopener noreferrer">NCTS-P4 reference data</a> that can be used for testing</li>
-<li>read the <a href="/guides/ctc-guarantee-balance-testing-guide" rel="noopener noreferrer">testing guide</a> to check that your software is compatible with this version of the API and to learn how to test your application in the sandbox environment</li>
-</ul>
-
-<h3 id="production-environment-requirements">Production environment requirements</h3>
-
-<p>Before you can use the production environment for the CTC Guarantee Balance API, you must:</p>
-
-<ul>
-<li>complete the <a href="/guides/ctc-guarantee-balance-testing-guide/documentation/figures/CTCGuarantee_Balance_API_Checklist_07-02-22.odt" rel="noopener noreferrer">CTC Guarantee Balance API Application for Production Credentials Checklist</a> (OpenDocument Text document)</li>
-<li>use your <a href="/developer/login" rel="noopener noreferrer">developer account</a> to apply for production credentials</li>
-</ul>
-
-<h3 id="get-your-customers-ready">Get your customers ready</h3>
-
-<p>If you work for a software house, each trader you serve must use the <a href="https://www.access.service.gov.uk/login/signin/creds" rel="noopener noreferrer">Government Gateway</a> to <a href="https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe?_gl=1*itulmt*_ga*MjA2MDk0MTQyMi4xNjY3Mzk2ODM5*_ga_Y4LWMWY6WS*MTY3NDgyMzU5OC41MS4xLjE2NzQ4NDE2NzcuMC4wLjA.&amp;_ga=2.207635798.536493967.1674469117-2060941422.1667396839" rel="noopener noreferrer">sign up to the CTC Traders API</a> and provide you with the following:</p>
-
-<ul>
-<li>GB Economic Operators Registration and Identification (EORI) number</li>
-<li>VAT details (optional)</li>
-<li>Standard Industrial Classification (SIC) code</li>
-<li>company or organisation details:
-
-<ul>
-<li>unique tax reference (UTR) number</li>
-<li>registered company name (this must be an exact match)</li>
-<li>registered company address</li>
-<li>date of company establishment</li>
-</ul></li>
-<li>email address</li>
-<li>contact details</li>
-</ul>
-
-<h2 id="user-journeys">User journeys</h2>
-
-<p>These journeys show examples of use:</p>
-
-<ul>
-<li><a href="/guides/ctc-guarantee-balance-service-guide/documentation/developer-setup.html" rel="noopener noreferrer">developer setup</a></li>
-<li><a href="/guides/ctc-guarantee-balance-service-guide/documentation/initiate-guarantee-balance-request.html" rel="noopener noreferrer">initiate a guarantee balance request</a></li>
-<li><a href="/guides/ctc-guarantee-balance-service-guide/documentation/check-guarantee-balance-request-status.html" rel="noopener noreferrer">check the status of a guarantee balance request</a></li>
-</ul>
-
-<h2 id="process-flow">Process flow</h2>
-
-<p>The process of getting a Guarantee Balance is explained in this process flow chart.</p>
-
-<p><img src="images/Guarantee_Balance_Process.png" alt="Guarantee Balance process." /></p>
-
-<ol>
-<li>An IE34 request guarantee balance query is sent to NCTS and the XML is checked to ensure that it is valid. </li>
-<li>An IE917 rejection message is returned to the user if the XML is invalid.</li>
-<li>Valid XML is checked by GMS to validate that the guarantee reference number (GRN), trader tax ID number (TIN) and guarantee access pin (PIN) are correct. </li>
-<li>If any of these are incorrect, an IE906 rejection message is returned to the user.</li>
-<li>A validated GMS check returns a successful IE37 receive guarantee balance message to the user. </li>
-</ol>
-
-<h2 id="terms-of-use">Terms of use</h2>
-
-<p>Your application must comply with <a href="/api-documentation/docs/terms-of-use" rel="noopener noreferrer">our terms of use</a>. You must accept the terms of use before we issue your application’s production credentials.</p>
-
-<h2 id="related-documentation">Related documentation</h2>
-
-<ul>
-<li><a href="/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0" rel="noopener noreferrer">CTC Guarantee Balance API v1.0 documentation</a></li>
-<li><a href="/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/1.0/oas/page" rel="noopener noreferrer">CTC Guarantee Balance API v1.0 reference</a></li>
-<li><a href="/guides/ctc-guarantee-balance-testing-guide/" rel="noopener noreferrer">CTC Guarantee Balance API phase 4 testing guide</a></li>
-<li><a href="/api-documentation/docs/api/service/common-transit-convention-traders/1.0" rel="noopener noreferrer">CTC Traders API v1.0 documentation</a></li>
-</ul>
-
-<h2 id="getting-help-and-support">Getting help and support</h2>
-
-<p>Before contacting us, find out if there is planned API downtime or a technical issue by checking <a href="https://api-platform-status.production.tax.service.gov.uk" rel="noopener noreferrer">HMRC API Platform Status</a> and <a href="https://www.gov.uk/guidance/new-computerised-transit-system-service-availability" rel="noopener noreferrer">New Computerised Transit System service availability</a>.</p>
-
-<p>If you have specific questions about the CTC Guarantee Balance API, contact our Software Developer Support (SDS) Team. You’ll get an initial response within 2 working days.</p>
-
-<p>You can also email questions to <a href="mailto:SDSTeam@hmrc.gov.uk" rel="noopener noreferrer">SDSTeam@hmrc.gov.uk</a>. We might ask for more detailed information when we respond.</p>
+<p>JSON schema files and example requests are available in the <a href="/guides/ctc-guarantee-balance-testing-guide/" rel="noopener noreferrer">CTC Guarantee Balance API phase 4 testing guide</a>.</p>
 
             
           </main>
