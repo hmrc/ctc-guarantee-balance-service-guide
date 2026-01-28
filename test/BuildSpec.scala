@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,9 @@
 
 package test
 
-import sys.process._
 import org.scalatest.matchers.should.Matchers
+
+import scala.sys.process._
 import org.scalatest.wordspec.AnyWordSpec
 
 import scala.language.postfixOps
@@ -25,7 +26,7 @@ import scala.language.postfixOps
 class BuildSpec extends AnyWordSpec with Matchers {
   "Building the content" should {
     "produce static files" in {
-      val result = "bundle install" #&& Process("bundle exec middleman build --verbose --build-dir=public/ --clean", None, "BASE_PATH" -> "/guides/ctc-guarantee-balance-service-guide/") !
+      val result = "bundle install" #&& Process("bundle exec middleman build --build-dir=public/ --clean", None) !
 
       result shouldBe 0
     }

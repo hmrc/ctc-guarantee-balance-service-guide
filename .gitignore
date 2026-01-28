@@ -3,6 +3,7 @@ project/project
 project/target
 target
 lib_managed
+public/
 tmp
 .history
 dist
@@ -20,12 +21,12 @@ node_modules/
 npm-debug.log
 yarn-debug.log
 yarn-error.log
-
+/vendor
+/.batect
+/.bsp
+**/.DS_Store
 .metals
 .vscode
-
-.batect
-.bsp
 package-lock.json
 .DS_Store
 source/.DS_Store

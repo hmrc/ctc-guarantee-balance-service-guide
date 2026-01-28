@@ -1,0 +1,29 @@
+---
+title: Submit a guarantee balance request | CTC Guarantee Balance API service guide
+weight: 3
+description: Software developers, designers, product owners or business analysts. Check a trader's guarantee balance.
+---
+
+# Submit a guarantee balance request
+
+Use the POST endpoint [Get a balance](/api-documentation/docs/api/service/common-transit-convention-guarantee-balance/2.0/oas/page#operation/getGuaranteeBalance) of CTC Guarantee Balance API v2.0 to get the balance associated with a guarantee reference number (GRN). 
+
+To execute a balance query, you must provide:
+
+- the GRN of the trader’s guarantee
+- an access code for the guarantee, which is a 4-digit alphanumeric PIN that is not case sensitive
+
+**Note:** If you want to test the endpoint, see [CTC Guarantee Balance API phase 5 testing guide](/guides/ctc-guarantee-balance-phase5-testing-guide/).
+
+Guarantee balance information is available only for:
+
+- type 0: guarantee waiver
+- type 1: comprehensive guarantee
+- type 9: individual guarantee with multiple usage
+
+Guarantee balance information is not supported for:
+
+- type 2: individual guarantee (by guarantor)
+- type 4: individual guarantee in the form of vouchers
+
+See the GOV.UK guidance for more [detailed information about NCTS guarantees](https://www.gov.uk/government/publications/the-new-computerised-transit-system-supporting-guidance/ncts-guarantees).

@@ -1,12 +1,12 @@
 ---
-title: Developer setup | CTC Guarantee Balance API phase 4 service guide
+title: Developer setup | CTC Guarantee Balance API service guide
 weight: 2
 description: Software developers, designers, product owners or business analysts. Check a trader's guarantee balance.
 ---
 
 # Developer setup
 
-To develop using CTC Guarantee Balance API v1.0, you must:
+To develop using CTC Guarantee Balance API v2.0, you must:
 
 - be familiar with HTTP, RESTful services, XML and OAuth2
 - be registered as a developer on the [HMRC Developer Hub](/api-documentation)
@@ -26,7 +26,7 @@ The main differences between these 2 environments are that:
 - in the sandbox environment you will [create and use test users](/api-documentation/docs/testing/test-users-test-data-stateful-behaviour) to call the endpoints
 - the release version of an API in the sandbox will generally be ahead of the version of the API in production
 
-The purpose of the sandbox (also known as External Test) is to provide an HMRC platform for all external partners to complete their required assurance activities so they are confident in their readiness for migration to NCTS phase 4.
+The purpose of the sandbox (also known as External Test) is to provide an HMRC platform for all external partners to complete their required assurance activities so they are confident in their readiness for migration to the latest NCTS phase.
 
 For more information about using our sandbox environments, see [Testing in the sandbox](/api-documentation/docs/testing).
 
@@ -36,17 +36,17 @@ Trader Test is a functional test platform where you can assure your software int
 
 ## API subscription model
 
-You must subscribe each application you register to CTC Guarantee Balance API v1.0. Subscribing allows an application access to all of the endpoints of the API.
+You must subscribe each application you register to CTC Guarantee Balance API v2.0. Subscribing allows an application access to all of the endpoints of the API.
 
 ## API access control
 
-CTC Guarantee Balance API v1.0 is a public API, so you should be able to gain access to it automatically and subscribe to it easily.
+CTC Guarantee Balance API v2.0 is a public API, so you should be able to gain access to it automatically and subscribe to it easily.
 
 ## API versioning
 
 For your application to be able to call a particular version of one of our APIs, you must:
 
-- ensure that your application has access to it (by checking that the version is visible to you at the top of the API’s documentation page)
+- ensure that your application has access to it (by checking that the version is visible at the top of the API’s documentation page)
 - subscribe your application to it (in addition to any other subscriptions you may already have for other versions)
 - modify your application’s `Accept` request header value when making a call to the API to reflect the version you wish to use (see the specific API reference for more details about request header values)
 
@@ -56,7 +56,7 @@ For more information about versioning, see our [Reference guide](/api-documentat
 
 Each software house should register a single application with HMRC. This application will be used to identify the software house during the OAuth 2.0 grant flow and will also be used in subsequent per user API calls. We limit the number of requests that each application can make. This protects our backend service against excessive load and encourages real-time API calls over batch processing.
 
-We set limits based on anticipated loads and peaks. The rate limit of CTC Guarantee Balance API v1.0 is 1 request per minute per guarantee reference. It is not possible to request an increase in this rate limit.
+We set limits based on anticipated loads and peaks. The rate limit of CTC Guarantee Balance API v2.0 is 1 request per minute per guarantee reference. It is not possible to request an increase in this rate limit.
 
 If your software reaches the allocated limit, some of your requests will get a HTTP 429 response code. If your application receives a 429 response, it should back off temporarily before attempting to make the same request again.
 
@@ -65,10 +65,6 @@ In most cases, simply following software design best practices will deliver a go
 Retries should not be too quick (delay the next attempt by a few seconds) and should include some randomisation to minimise the risk of different application instances conflicting. Where an application instance is generating high volumes of API calls, the software design should consider periodically pausing or locally rate limiting those API calls to minimise the potential for a spike in traffic from one instance impacting another.
 
 For more information about versioning, see our [Reference guide](/api-documentation/docs/reference-guide#versioning).
-
-## API timeouts
-
-Requests that take more than an hour to process will expire and will not be visible by the query endpoints. If this happens, you should start a new balance request. During normal service the response should take only seconds but if you are waiting longer then you should check the [NCTS service availability](https://www.gov.uk/government/publications/new-computerised-transit-system-service-availability-and-issues/new-computerised-transit-system-service-availability-and-issues).
 
 ## Authentication
 
@@ -101,55 +97,3 @@ There are many best practices recommendations for handling API errors and except
 - [The 6 Pillars of the AWS Well-Architected Framework](https://aws.amazon.com/blogs/apn/the-6-pillars-of-the-aws-well-architected-framework/) (AWS Partner Network blog)
 - [Design for Failure](https://docs.aws.amazon.com/whitepapers/latest/running-containerized-microservices/design-for-failure.html) (excerpt from Amazon white paper 'Running Containerized Microservices on AWS')
 - [Implement resilient applications](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/) (excerpt from Microsoft e-book '.NET Microservices Architecture for Containerized .NET Applications')
-
-## Error codes
-
-The following error codes are limited in their detail due to constraints of the NCTS.
-
-<table>
-  <colgroup span="4"></colgroup>
-  <tr>
-    <th>Error type</th>
-    <th>Error pointer</th>
-    <th>Error reason</th>
-    <th>Error message</th>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>RC1.TIN</td>
-    <td></td>
-    <td>Incorrect EORI Number</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>GRR(1).Guarantee reference number (GRN)</td>
-    <td></td>
-    <td>Incorrect Guarantee Reference Number</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>GRR(1).ACC(1).Access code</td>
-    <td></td>
-    <td>Incorrect Access Code</td>
-  </tr>
-  <tr>
-    <td>14</td>
-    <td>GRR(1).GQY(1).Query identifier</td>
-    <td>R261</td>
-    <td>Unsupported Guarantee Type</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>GRR(1).OTG(1).TIN</td>
-    <td></td>
-    <td>EORI and Guarantee Reference Number do not match</td>
-  </tr>
-  <tr>
-    <td>26</td>
-    <td>RC1.TIN</td>
-    <td></td>
-    <td>Query limit for the EORI has been exceeded, or an unknown EORI has been used.</td>
-  </tr>
-</table>
-
-**Note:** There is a limit on the number of queries that can be made against an EORI number over a 24-hour period. An error type `26` is returned if this limit is exceeded. The limit is currently set to `1000` in both Trader Test and Production environments, but the Production limit may be subject to revision based upon usage.
