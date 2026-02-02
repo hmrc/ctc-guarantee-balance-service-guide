@@ -88,7 +88,7 @@ These journeys show examples of use:
 
 ## Process flow
 
-The process flow of a guarantee query check is in the [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis/documentation/process_flows.html#guarantee-query-check).
+The process flow of a guarantee query check is in the [NCTS Technical Interface Specification](/guides/ctc-traders-tis/documentation/process_flows.html#guarantee-message-flows).
 
 ## Terms of use
 
