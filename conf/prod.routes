@@ -1,4 +1,4 @@
-->      /                                                     health.Routes
+->      /                                                  health.Routes
 GET     /guides/ctc-guarantee-balance-service-guide           controllers.Default.redirect(to = "/guides/ctc-guarantee-balance-service-guide/")
 GET     /guides/ctc-guarantee-balance-service-guide/          controllers.Assets.at(path="/public", file="index.html")
 GET     /guides/ctc-guarantee-balance-service-guide/*file     controllers.Assets.at(path="/public", file)
