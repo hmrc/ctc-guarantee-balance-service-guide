@@ -3,7 +3,7 @@ import sbt._
 
 
 object AppDependencies {
-  lazy val bootStrapPlayVersion = "10.4.0"
+  lazy val bootStrapPlayVersion = "10.6.0"
 
   lazy val compile: Seq[ModuleID] = Seq(
     ws,
