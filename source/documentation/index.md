@@ -16,9 +16,9 @@ Use the API to provide traders with up-to-date information about how much of the
 
 The API does not provide real-time data about a trader’s guarantee balance. Instead, the API provides a snapshot of the guarantee state at the time when a request is submitted. It is possible that a short delay could coincide with events that could change the trader’s balance information. Guarantee balance responses for a trader could become out of date quickly if the trader has a lot of transit movements progressing at the same time.
 
-The API endpoint relates only to Great Britain and Northern Ireland. You can also use the [HMRC sandbox environment](/api-documentation/docs/sandbox/introduction) to run tests for Great Britain and Northern Ireland transit movements.
+The API endpoint relates only to Great Britain and Northern Ireland. You can also use the [HMRC sandbox environment](/api-documentation/) to run tests for Great Britain and Northern Ireland transit movements.
 
-You can use the API on its own or you can use it with the [CTC Traders API v2.0](/api-documentation/docs/api/service/common-transit-convention-traders/2.0), which enables your software to send departure and arrival movement notifications to the New Computerised Transit System (NCTS) and get messages sent from customs offices of departure and destination.
+You can use the API on its own or you can use it with the [CTC Traders API v2.0](/api-documentation/docs/api/service/common-transit-convention-traders/), which enables your software to send departure and arrival movement notifications to the New Computerised Transit System (NCTS) and get messages sent from customs offices of departure and destination.
 
 ### NCTS guarantees explained
 
@@ -34,7 +34,6 @@ For more information, see [HMRC guidance about NCTS guarantees](https://www.gov.
 
 CTC Guarantee Balance API v2.0:
 
-- supports only NCTS phase 5
 - is live in production and available for testing
 
 ## Quick start
@@ -66,7 +65,7 @@ Before you can use the production environment for the CTC Guarantee Balance API,
 
 ### Get your customers ready
 
-If you work for a software house, each trader you serve must use the [Government Gateway](https://www.access.service.gov.uk/login/signin/creds) to [sign up to the CTC Traders API](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe?_gl=1*itulmt*_ga*MjA2MDk0MTQyMi4xNjY3Mzk2ODM5*_ga_Y4LWMWY6WS*MTY3NDgyMzU5OC41MS4xLjE2NzQ4NDE2NzcuMC4wLjA.&_ga=2.207635798.536493967.1674469117-2060941422.1667396839) and provide you with the following:
+If you work for a software house, each trader must use [sign up to the CTC Traders API](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe?_gl=1*itulmt*_ga*MjA2MDk0MTQyMi4xNjY3Mzk2ODM5*_ga_Y4LWMWY6WS*MTY3NDgyMzU5OC41MS4xLjE2NzQ4NDE2NzcuMC4wLjA.&_ga=2.207635798.536493967.1674469117-2060941422.1667396839) and provide you with the following:
 
 - GB Economic Operators Registration and Identification (EORI) number
 - VAT details (optional)
